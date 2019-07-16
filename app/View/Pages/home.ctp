@@ -1,9 +1,12 @@
 <?php
-/**
- * @link          http://cakephp.org CakePHP(tm) Project
- * @package       app.View.Pages
- * @since         CakePHP(tm) v 0.10.0.1076
- */
+$serverName = "serverName\\sqlexpress, 1433"; //serverName\instanceName, portNumber (default is 1433)
+$connectionInfo = array( "Database"=>"dbName", "UID"=>"userName", "PWD"=>"password");
+$conn = sqlsrv_connect( $serverName, $connectionInfo);
 
-This is my homepage.
+if( $conn ) {
+     echo "Connection established.<br />";
+}else{
+     echo "Connection could not be established.<br />";
+     die( print_r( sqlsrv_errors(), true));
+}
 ?>
